@@ -35,7 +35,29 @@
 			</form>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		
+$('button').on('click',function(){
+		var x= $(this).data("search");
+		console.log (x);
+		
+//URL for API
+		var queryURL ="http://api.giphy.com/v1/gifs/search?q= "+x+" &api_key=dc6zaTOxFJmzC&limit=10";  
+			console.log(queryURL);
 
+//ajax call to retrieve info from API
+		$.ajax({url:queryURL, method:'GET'})
+		.done(function (response) {
+			console.log(response);
+      $('body').append("<p>Rating: "+response.data[0].rating+"</p>");
+			$('body').append("<img src='"+response.data[0].images.downsized.url+"'>");	
+
+		});	
+	
+	});
+
+	</script>
 
 </body>
 </html>
