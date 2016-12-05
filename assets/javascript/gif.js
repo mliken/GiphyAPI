@@ -42,7 +42,7 @@ $("#add-giphy").on("click", function() {
 
         var search= $(this).data('name'); // variable that goes and search for "this" button specific data attr (name)
         console.log("search query" + search);
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=dc6zaTOxFJmzC&limit=10";
 
         $.ajax({ url: queryURL, method: "get" }).done(function(response) {
 
