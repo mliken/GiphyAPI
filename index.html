@@ -1,68 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-	<title>Giphy</title>
-	<link rel = "stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/javascript/app.js"></script>
-	</head>
+<meta charset="UTF-8">
+<title> Spiffy Giphy </title>
+    
+<!--  For responsivnes/media query -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  Reset CSS -->
+<!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ 
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"> -->
+
+<!-- My CSS -->
+<!-- <link rel="stylesheet" href="assets/css/style.css">-->
+
+</head>
+
 <body>
 
-			<!--tv show buttons-->
-		<button data-search="Parks and Rec"> Parks and Recreation </button>
-		<button data-search="It's Always Sunny"> It's Always Sunny in Philadelphia</button>
-		<button data-search="Bob's Burgers"> Bob's Burgers</button>
-		<button data-search="Gossip Girl">Gossip Girl</button>
+      <!-- Rendered buttons will get dumped Here  -->
+      <h1> Spiffy Giphy </h1>
+      <div id="buttons-view"></div>
 
+      <form id="giphy-form">
+          <label for="giphy-input">Search a Television Title</label>
+          <input type="text" id="giphy-input"><br><br>
+          <!-- Button triggers new GIPHY to be added -->
+          <input id="add-giphy" type="submit" value="submit">
+      </form>
 
-			<div id="tvbuttons">
-			</div>
-	
-			<div class="row">
-			<!--place holder for gifs-->
-			<div class="col-sm-9 giphy">
-			</div>
-
-			<div class="col-sm-3">
-			<!--input form that adds to the array-->
-
-			<form>
-				Add a Character:<br>
-					<input id="input" placeholder="newShow">
-					<input id="submit" type="button" value="Submit">
-			</form>
-		</div>
-	</div>
-	
-	<script type="text/javascript">
-		
-$('button').on('click',function(){
-		var x= $(this).data("search");
-		console.log (x);
-		
-//URL for API
-		var queryURL ="http://api.giphy.com/v1/gifs/search?q= "+x+" &api_key=dc6zaTOxFJmzC&limit=10";  
-			console.log(queryURL);
-
-//ajax call to retrieve info from API
-		$.ajax({url:queryURL, method:'GET'})
-		.done(function (response) {
-			console.log(response);
-			for(var i=0; i<response.data.length;i++){
-				$('body').append("<p>Rating: "+response.data[i].rating+"</p>");
-				$('body').append("<img src='"+response.data[i].images.downsized.url+"'>");	
-
-				}
-
-      		
-
-		});	
-	
-	});
-
-	</script>
-
-</body>
+      <!-- Gifs will get dumped dere -->
+      <div id="giphy-view"></div>
+    
+    </div>
+  </body>
 </html>
+    
+
+
+<!-- Added link to the jQuery library -->
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+<!--  javascript link in my assets folder  -->
+<script type="text/javascript" src="assets/javascript/gif.js"></script>
+
+   
